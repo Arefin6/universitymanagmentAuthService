@@ -9,7 +9,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 // GET method route
-app.get('/', function (req:any, res) {
+app.get('/', function (req, res) {
     res.send('GET request to the homepage');
 });
   
