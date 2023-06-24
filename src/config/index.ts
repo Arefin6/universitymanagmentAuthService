@@ -6,5 +6,5 @@ dotEnv.config({path:path.join(process.cwd(),'.env')})
 export default {
     port:process.env.PORT,
     DbUrl: process.env.DBUrl,
-    StudentDefaultPassword:process.env.StudentDefaultPass
+    UserDefaultPassword:process.env.UserDefaultPass
 }
