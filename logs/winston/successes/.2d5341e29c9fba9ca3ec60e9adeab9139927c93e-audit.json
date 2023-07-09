@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/successes/.2d5341e29c9fba9ca3ec60e9adeab9139927c93e-audit.json",
+    "files": [
+        {
+            "date": 1688580582063,
+            "name": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/successes/phu-2023-07-06-00-success.log",
+            "hash": "98dabb4d1ed94dfaffd7c02a6c4dc1ba569d128d1f7af835d9e25638fc6081bc"
+        }
+    ],
+    "hashType": "sha256"
+}
