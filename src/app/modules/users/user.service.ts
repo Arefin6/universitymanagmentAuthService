@@ -2,6 +2,7 @@ import config from "../../../config";
 import User from "./user.model"
 import { IUser } from "./user.interface"
 import { generateUserId } from "./user.utils";
+import ApiError from "../../../erros/ApiError";
 
 const saveUser = async (user:IUser)=>{
    
@@ -15,9 +16,11 @@ const saveUser = async (user:IUser)=>{
   }  
   const createdUser = await User.create(user);
   if(!createdUser){
-    throw new Error("User Creation failed")
+    throw new ApiError(400,"Failed To create User");
   }
   return createdUser;
 }
 
-export default {saveUser}
+export const UserService={
+  saveUser
+}

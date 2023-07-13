@@ -10,7 +10,7 @@
 
   "rules": {
     "no-unused-vars": "error",
-    "no-console":"error",
+    "no-console":"warn",
     "no-undefined":"error",
     "no-unreachable":"error",
     "no-unused-expressions":"error",

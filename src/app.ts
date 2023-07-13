@@ -1,6 +1,7 @@
 import express, { Application} from "express";
 import cors from "cors";
-import userRoute from "./app/modules/user.route";
+import globalErrorHandler from "./app/middlewares/golbalErrorHandler";
+import { UserRoutes } from "./app/modules/users/user.route";
 const app:Application = express();
 
 app.use(cors())
@@ -10,11 +11,16 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 // app routes
-app.use('/api/v1/users/',userRoute)
+app.use('/api/v1/users/',UserRoutes)
 
 // GET method route
-app.get('/', function (req, res) {
-    res.send('GET request to the homepage');
+//Test Route
+app.get('/',async function (req, res,next) {
+    Promise.reject(new Error("Unhandled Promise Rejection"))
 });
+
+// global Error Handler
+
+app.use(globalErrorHandler)
   
 export default app;
