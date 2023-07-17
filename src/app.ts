@@ -15,9 +15,10 @@ app.use('/api/v1/users/',UserRoutes)
 
 // GET method route
 //Test Route
-// app.get('/',async function (req, res,next) {
-//     Promise.reject(new Error("Unhandled Promise Rejection"))
-// });
+app.get('/',async function (req,res) {
+    res.send("Api running");
+    // Promise.reject(new Error("Unhandled Promise Rejection"))
+});
 
 // global Error Handler
 
