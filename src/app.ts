@@ -1,8 +1,7 @@
 import express, { Application} from "express";
 import cors from "cors";
 import globalErrorHandler from "./app/middlewares/golbalErrorHandler";
-import { UserRoutes } from "./app/modules/users/user.route";
-import { AcademicSemesterRoutes } from "./app/modules/academicSemester/academicSemesterRoute";
+import router from "./app/routes";
 const app:Application = express();
 
 app.use(cors())
@@ -12,8 +11,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 // app routes
-app.use('/api/v1/users/',UserRoutes)
-app.use('/api/v1/academicSemester/',AcademicSemesterRoutes)
+app.use('/api/v1',router)
 
 // GET method route
 //Test Route
