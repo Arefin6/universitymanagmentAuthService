@@ -59,6 +59,11 @@
             "date": 1689610829664,
             "name": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/errors/phu-2023-07-17-22-error.log",
             "hash": "a0e39facd2830f10ce8ba38f690752575e43d4b8b784a6c37bb83fa252305f5c"
+        },
+        {
+            "date": 1689784445507,
+            "name": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/errors/phu-2023-07-19-22-error.log",
+            "hash": "13c24bf045d1232dbaa52174626863a2dcf506bac8d6f392a8bbff83806ebad0"
         }
     ],
     "hashType": "sha256"

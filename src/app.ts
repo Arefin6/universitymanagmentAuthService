@@ -2,6 +2,8 @@ import express, { Application} from "express";
 import cors from "cors";
 import globalErrorHandler from "./app/middlewares/golbalErrorHandler";
 import router from "./app/routes";
+import status from 'http-status';
+
 const app:Application = express();
 
 app.use(cors())
@@ -23,5 +25,21 @@ app.get('/',async function (req,res) {
 // global Error Handler
 
 app.use(globalErrorHandler)
+
+//handle Not Found
+
+app.use((req,res,next)=>{
+    res.status(status.NOT_FOUND).json({
+        success:false,
+        message:"Route Not Found",
+        errorMessages:[
+            {
+                path: req.originalUrl,
+                message: 'API Not Found',
+            },
+        ],
+    });
+    next();
+});
   
 export default app;
