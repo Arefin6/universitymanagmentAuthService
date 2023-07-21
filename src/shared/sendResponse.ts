@@ -1,3 +1,4 @@
+/* eslint-disable no-undefined */
 import { Response } from "express"
 
 type IApiResponse<T> ={

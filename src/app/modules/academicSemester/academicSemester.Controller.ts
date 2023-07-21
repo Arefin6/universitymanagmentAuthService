@@ -24,7 +24,7 @@ const createSemester = catchAsync(
 
 // get Single Semester
 
-const getSingleSemester = catchAsync(async(req:Request,res:Response,next:NextFunction) =>{
+const getSingleSemester = catchAsync(async(req:Request,res:Response) =>{
    
   const id = req.params.id;
   

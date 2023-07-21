@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-undefined */
 import  config  from "../../config";
@@ -13,7 +14,7 @@ const globalErrorHandler:ErrorRequestHandler = (err,req,res,next)=>{
   
   config.env === "development"?
   console.log("Global error Handler",err):
-  errorLogger.error("Global error Handler",err); 
+  errorLogger.error("Global error Handler",err)
 
 
   let statusCode = 500;
