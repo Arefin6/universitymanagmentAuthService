@@ -6,11 +6,6 @@
     "auditLog": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/errors/.966840946af409b37a3bc036e6439cc776edc464-audit.json",
     "files": [
         {
-            "date": 1688580582065,
-            "name": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/errors/phu-2023-07-06-00-error.log",
-            "hash": "ec6137a1140c130ce4a53a5b9a528370831f61a33a8e163cda31f656cd188aa0"
-        },
-        {
             "date": 1689012056271,
             "name": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/errors/phu-2023-07-11-00-error.log",
             "hash": "143e36d03063d8e6f6a717af57de6aecf0d0a02e7e7303723572266569d6bd13"
@@ -64,6 +59,26 @@
             "date": 1689784445507,
             "name": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/errors/phu-2023-07-19-22-error.log",
             "hash": "13c24bf045d1232dbaa52174626863a2dcf506bac8d6f392a8bbff83806ebad0"
+        },
+        {
+            "date": 1690006784819,
+            "name": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/errors/phu-2023-07-22-12-error.log",
+            "hash": "5d71cbd689c51fbb4e592996f42a302ed37db53d542f5f791ee4cebbc25471e4"
+        },
+        {
+            "date": 1690009432547,
+            "name": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/errors/phu-2023-07-22-13-error.log",
+            "hash": "411f4f6f160891fcaa63b2fbe43cb15df713c692e8e0fb8b319e0067da26eda7"
+        },
+        {
+            "date": 1690013992838,
+            "name": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/errors/phu-2023-07-22-14-error.log",
+            "hash": "b9265e524212a3e138b985a204a322e73d1865cc625bbe5149b46015e0b89f23"
+        },
+        {
+            "date": 1690041847766,
+            "name": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/errors/phu-2023-07-22-22-error.log",
+            "hash": "86a65a3d499d67c173710b9df4ef9ba486814cdacd3a84757ccdf3f6d3f7a33d"
         }
     ],
     "hashType": "sha256"

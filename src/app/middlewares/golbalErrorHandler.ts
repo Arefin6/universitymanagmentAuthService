@@ -9,6 +9,7 @@ import ApiError from "../../erros/ApiError";
 import { errorLogger } from "../../shared/logger";
 import { ZodError } from "zod";
 import handleZodError from "../../erros/handleZodError";
+import handleCastError from "../../erros/handleCastError";
 
 const globalErrorHandler:ErrorRequestHandler = (err,req,res,next)=>{
   
@@ -33,16 +34,22 @@ const globalErrorHandler:ErrorRequestHandler = (err,req,res,next)=>{
      message = simplifiedError.message;
      errorMessages = simplifiedError.errorMessage;
   }
-  else if (err instanceof Error) {
-    message = err.message;
-    errorMessages = err.message ? [{ path: "", message: err.message }] : [];
+  else if(err?.name === 'CastError'){
+    const simplifiedError = handleCastError(err)
+     statusCode = simplifiedError.statusCode;
+     message = simplifiedError.message;
+     errorMessages = simplifiedError.errorMessages;
   }
   else if (err instanceof ApiError) {
     statusCode = err.statusCode;
     message = err.message;
     errorMessages = err.message ? [{ path: "", message: err.message }] : [];
   }
-
+  else if (err instanceof Error) {
+    message = err.message;
+    errorMessages = err.message ? [{ path: "", message: err.message }] : [];
+  }
+  
   res.status(statusCode).json({
     success:false,
     message,

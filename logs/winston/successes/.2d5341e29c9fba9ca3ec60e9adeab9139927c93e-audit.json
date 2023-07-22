@@ -6,11 +6,6 @@
     "auditLog": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/successes/.2d5341e29c9fba9ca3ec60e9adeab9139927c93e-audit.json",
     "files": [
         {
-            "date": 1688580582063,
-            "name": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/successes/phu-2023-07-06-00-success.log",
-            "hash": "98dabb4d1ed94dfaffd7c02a6c4dc1ba569d128d1f7af835d9e25638fc6081bc"
-        },
-        {
             "date": 1689012056269,
             "name": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/successes/phu-2023-07-11-00-success.log",
             "hash": "7abd6cf0ec424c50fbd9954a26ba85b97deb7ab8c32a665b0641100a8e82e4d0"
@@ -69,6 +64,31 @@
             "date": 1689784445505,
             "name": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/successes/phu-2023-07-19-22-success.log",
             "hash": "f52901111787d84a418ee42ca3f9d0fe3b18bf630779adc3439530d43d04f900"
+        },
+        {
+            "date": 1690006784817,
+            "name": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/successes/phu-2023-07-22-12-success.log",
+            "hash": "94314635b291e224d74c872da392d8b9272ebf9d9d63a9a9341667e5fc999386"
+        },
+        {
+            "date": 1690009432545,
+            "name": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/successes/phu-2023-07-22-13-success.log",
+            "hash": "c89245369b44b0b75827f8213c2b21e9d460d63cd96f8015e125364aee957bd2"
+        },
+        {
+            "date": 1690013511421,
+            "name": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/successes/phu-2023-07-22-14-success.log",
+            "hash": "55bf9e5002455d83712446e75264df0e269f85eb1cab973e8d3a840dc50d871e"
+        },
+        {
+            "date": 1690017940962,
+            "name": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/successes/phu-2023-07-22-15-success.log",
+            "hash": "7f50d728d15eea814e0cd06bea4fa7b2da7c76da82d2ddd01a873d7de90705c7"
+        },
+        {
+            "date": 1690041847763,
+            "name": "/Users/Shared/Next Level Course By PH/untversityMangmegntAuthService/logs/winston/successes/phu-2023-07-22-22-success.log",
+            "hash": "046721b0b5b8af332679670ef6430663af8b1ca591b3bf4a5e8ec4390a47e0f1"
         }
     ],
     "hashType": "sha256"
