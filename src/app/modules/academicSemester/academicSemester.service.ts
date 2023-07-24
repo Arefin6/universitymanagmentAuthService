@@ -35,6 +35,12 @@ const  updateSemester = async(id:string,payload:Partial<IAcademicSemester>):Prom
    return result;
 }
 
+// delete Semester
+const  deleteSemester = async(id:string):Promise<IAcademicSemester | null>=>{
+   const result = await AcademicSemester.findByIdAndDelete(id)
+   return result;
+}
+
 
 const getAllSemester = async(filters: IAcademicSemesterFilters,paginationOptions:IPaginationoption):Promise<IGenericResponse<IAcademicSemester[]>>=>{
 
@@ -89,4 +95,4 @@ const getAllSemester = async(filters: IAcademicSemesterFilters,paginationOptions
    }
 }
 
-export const AcademicSemesterService = { createSemester,getAllSemester,getSingleSemester,updateSemester}
+export const AcademicSemesterService = { createSemester,getAllSemester,getSingleSemester,updateSemester,deleteSemester}
