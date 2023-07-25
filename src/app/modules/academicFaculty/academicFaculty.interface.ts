@@ -7,5 +7,5 @@ export type IAcademicFaculty = {
 export type AcademicFacultyModel=Model<IAcademicFaculty,Record<string,unknown>>
 
 export type IAcademicFacultFilters = {
-    serarchTrem?:string
+    searchTerm?:string
 }
