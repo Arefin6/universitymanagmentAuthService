@@ -14,6 +14,31 @@ const createFaculty = async (payload:IAcademicFaculty):Promise<IAcademicFaculty>
 }
 
 
+const getSingleFaculty = async (id:string):Promise<IAcademicFaculty|null>=>{
+  
+    const result = await AcademicFaculty.findById(id);
+    
+    return result;
+ }
+
+ 
+const updateFaculty = async (id:string,payload:IAcademicFaculty):Promise<IAcademicFaculty|null>=>{
+    
+    const result = await AcademicFaculty.findOneAndUpdate({_id:id},payload,{new:true});
+    
+    return result;
+ }
+
+ 
+const deleteFaculty = async (id:string):Promise<IAcademicFaculty|null>=>{
+  
+    const result = await AcademicFaculty.findByIdAndDelete(id);
+    
+    return result;
+ }
+
+
+
 const getAllFacities = async (filters:IAcademicFacultFilters,paginationOptions:IPaginationoption): Promise<IGenericResponse<IAcademicFaculty[]>>=>{
   const{searchTerm,...filtersData} = filters;
   const {page,limit,skip,sortBy,sortOrder}=paginationHelpers.calculatePagination(paginationOptions);
@@ -71,10 +96,10 @@ const getAllFacities = async (filters:IAcademicFacultFilters,paginationOptions:I
 
  }
 
-
-
-
 export const AcademicFaculityService ={
     createFaculty,
-    getAllFacities
+    getAllFacities,
+    getSingleFaculty,
+    deleteFaculty,
+    updateFaculty
 }
