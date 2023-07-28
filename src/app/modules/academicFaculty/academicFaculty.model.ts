@@ -15,4 +15,4 @@ const AcademicFacultySchema = new Schema<IAcademicFaculty,AcademicFacultyModel>(
 })
 
 
-export const AcademicFaculty = model<IAcademicFaculty,AcademicFacultyModel>('AcasdemicFaculty',AcademicFacultySchema)
+export const AcademicFaculty = model<IAcademicFaculty,AcademicFacultyModel>('AcademicFaculty',AcademicFacultySchema)
