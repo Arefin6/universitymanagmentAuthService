@@ -1,14 +1,14 @@
 import config from "../../../config";
 import User from "./user.model"
 import { IUser } from "./user.interface"
-import { generateUserId } from "./user.utils";
+//import { generateStudentId } from "./user.utils";
 import ApiError from "../../../erros/ApiError";
 
 const saveUser = async (user:IUser)=>{
    
-  const id = await generateUserId();
+  // const id = await generateStudentId();
   
-  user.id = id;
+  // user.id = id;
 
   //default password
   if(!user.password){

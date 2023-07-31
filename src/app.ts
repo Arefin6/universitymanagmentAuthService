@@ -22,6 +22,8 @@ app.get('/',async function (req,res) {
     // Promise.reject(new Error("Unhandled Promise Rejection"))
 });
 
+
+
 // global Error Handler
 
 app.use(globalErrorHandler)

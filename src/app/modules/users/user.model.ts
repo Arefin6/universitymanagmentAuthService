@@ -1,8 +1,6 @@
 import { Schema,model } from "mongoose";
 import { IUser, UserModel } from "./user.interface";
 
-
-
 const userSchema = new Schema<IUser>({
    id:{
     type:String,
@@ -16,8 +14,24 @@ const userSchema = new Schema<IUser>({
    password:{
     type:String,
     required:true
-   }
-  },{timestamps:true});
+   },
+   student:{
+      type:Schema.Types.ObjectId,
+      ref:'Student'
+   },
+   // faculty:{
+   //    type:Schema.Types.ObjectId,
+   //    ref:'Faculty'
+   // },
+   // admin:{
+   //    type:Schema.Types.ObjectId,
+   //    ref:'Admin'
+   // },
+  },{timestamps:true,
+     toJSON:{
+      virtuals:true
+     } 
+   });
 
   const User = model<IUser,UserModel>("User",userSchema)
   export default User;
