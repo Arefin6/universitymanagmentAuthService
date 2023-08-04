@@ -49,19 +49,19 @@ const getAllStudent = catchAsync(
 
 // // Update Student
 
-// const updateStudent = catchAsync(
-//   async(req:Request,res:Response) =>{
-//       const id = req.params.id;
-//       const updatedData = req.body
+const updateStudent = catchAsync(
+  async(req:Request,res:Response) =>{
+      const id = req.params.id;
+      const updatedData = req.body
    
-//      const result = await AcademicSemesterService.updateSemester(id,updatedData);
-//      sendResponse<IStudent>(res,{
-//       statusCode: status.OK,
-//       success:true,
-//       message: 'Student Updated successfully!',
-//       data: result
-//      })
-// });
+     const result = await StudentService.updateStudent(id,updatedData);
+     sendResponse<IStudent>(res,{
+      statusCode: status.OK,
+      success:true,
+      message: 'Student Updated successfully!',
+      data: result
+     })
+});
 
 // delete Student
 
@@ -77,4 +77,4 @@ const deleteStudent = catchAsync(
      })
 });
   
-export const StudentController = {getAllStudent,getSingleStudent,deleteStudent}
+export const StudentController = {getAllStudent,getSingleStudent,deleteStudent,updateStudent}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SortOrder } from "mongoose";
 import { paginationHelpers } from "../../../helpers/paginationHelper";
 import { IGenericResponse } from "../../../interfaces/common";
@@ -5,6 +6,8 @@ import { IPaginationoption } from "../../../interfaces/pagination";
 import { IStudent, IStudentFilters } from "./student.interface";
 import Student from "./student.model";
 import { studentSearchableFields } from "./studentConstant";
+import ApiError from "../../../erros/ApiError";
+import httpStatus from "http-status";
 
 
 // get Single Student
@@ -13,14 +16,42 @@ const  getSingleStudent = async(id:string):Promise<IStudent | null>=>{
    return result;
 }
 
-// // Update Semester
-// const  updateSemester = async(id:string,payload:Partial<IAcademicSemester>):Promise<IAcademicSemester | null>=>{
-//    if(payload.title && payload.code && academicSemesterTitleCodeMapper[payload.title]!== payload.code){
-//       throw new ApiError(status.BAD_REQUEST, 'Invalid Semester Code');
-//    }
-//    const result = await AcademicSemester.findOneAndUpdate({_id:id},payload,{new:true});
-//    return result;
-// }
+//  Update Student
+const  updateStudent = async(id:string,payload:Partial<IStudent>):Promise<IStudent | null>=>{
+
+   const isExists = await Student.findOne({id})
+   
+   if(!isExists){
+      throw new ApiError(httpStatus.NOT_FOUND, 'Student Not Found');
+   }
+   const {name,guirdian,localGuardian,...studentData}= payload
+
+   const updatedStudentData:Partial<IStudent> = {...studentData} ;
+
+   if (name && Object.keys(name).length > 0) {
+      Object.keys(name).forEach(key => {
+        const nameKey = `name.${key}` as keyof Partial<IStudent>; // `name.fisrtName`
+        (updatedStudentData as any)[nameKey] = name[key as keyof typeof name];
+      });
+    }
+    if ( guirdian&& Object.keys(guirdian).length > 0) {
+      Object.keys(guirdian).forEach(key => {
+        const guardianKey = `guardian.${key}` as keyof Partial<IStudent>; // `guardian.fisrtguardian`
+        (updatedStudentData as any)[guardianKey] =
+        guirdian[key as keyof typeof guirdian];
+      });
+    }
+    if (localGuardian && Object.keys(localGuardian).length > 0) {
+      Object.keys(localGuardian).forEach(key => {
+        const localGuradianKey =
+          `localGuardian.${key}` as keyof Partial<IStudent>; // `localGuardian.fisrtName`
+        (updatedStudentData as any)[localGuradianKey] =
+          localGuardian[key as keyof typeof localGuardian];
+      });
+    }
+   const result = await Student.findOneAndUpdate({id},payload,{new:true});
+   return result;
+}
 
 // delete Student
 const  deleteStudent = async(id:string):Promise<IStudent | null>=>{
@@ -82,4 +113,4 @@ const getAllStudent = async(filters: IStudentFilters,paginationOptions:IPaginati
    }
 }
 
-export const StudentService = { getAllStudent,getSingleStudent,deleteStudent}
+export const StudentService = { getAllStudent,getSingleStudent,deleteStudent,updateStudent}
