@@ -11,12 +11,14 @@ import mongoose from "mongoose";
 import Student from "../student/student.model";
 import httpStatus from "http-status";
 
+
 const createUser = async (student:IStudent,user:IUser)=>{
    
   //default password
   if(!user.password){
     user.password = config.StudentDefaultPassword as string;
   } 
+
   
   // set Role
    user.role ='student';
@@ -44,7 +46,7 @@ const createUser = async (student:IStudent,user:IUser)=>{
      // set student _id (reference) into user.student
      user.student = newStudent[0]._id;
       
-    //create User 
+    // create User 
     
     const newUser = await User.create([user],{session});
 

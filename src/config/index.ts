@@ -7,5 +7,6 @@ export default {
     env: process.env.NodeEnv,
     port:process.env.PORT,
     DbUrl: process.env.DBUrl,
-    StudentDefaultPassword:process.env.StudentDefaultPass
+    StudentDefaultPassword:process.env.StudentDefaultPass,
+    bcryptSaltRound:process.env.Bcrypt_Salt_Round 
 }
