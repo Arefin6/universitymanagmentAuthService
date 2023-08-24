@@ -4,7 +4,7 @@ import { IUser, UserModel } from "./user.interface";
 import bcrypt from 'bcrypt';
 import config from "../../../config";
 
-const userSchema = new Schema<IUser>({
+const UserSchema = new Schema<IUser>({
    id:{
     type:String,
     required:true,
@@ -16,7 +16,12 @@ const userSchema = new Schema<IUser>({
    },
    password:{
     type:String,
-    required:true
+    required:true,
+    select:0
+   },
+   needsPasswordChange:{
+    type:Boolean,
+    default:true
    },
    student:{
       type:Schema.Types.ObjectId,
@@ -36,9 +41,22 @@ const userSchema = new Schema<IUser>({
      } 
    });
 
+ 
+ // check if User Exists
+ 
+ UserSchema.methods.isUserExits = async function(id:string):Promise<IUser | null>{
+       return await User.findOne({id},{id:1,password:1,needsPasswordChange:1});                       
+ };
+
+ // compare Password
+ 
+ UserSchema.methods.isPasswordMatched = async function(givenPassword:string,savedPassword:string):Promise<boolean>{
+  return await bcrypt.compare(givenPassword,savedPassword)                       
+};
+
  // hash Password Before Saving
  
- userSchema.pre('save',async function(next){
+ UserSchema.pre('save',async function(next){
     
    const user = this;
 
@@ -48,5 +66,5 @@ const userSchema = new Schema<IUser>({
     
  });
 
-  const User = model<IUser,UserModel>("User",userSchema)
+  const User = model<IUser,UserModel>("User",UserSchema)
   export default User;
