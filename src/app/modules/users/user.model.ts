@@ -44,13 +44,13 @@ const UserSchema = new Schema<IUser>({
  
  // check if User Exists
  
- UserSchema.methods.isUserExits = async function(id:string):Promise<IUser | null>{
+ UserSchema.statics.isUserExits = async function(id:string):Promise<IUser | null>{
        return await User.findOne({id},{id:1,password:1,needsPasswordChange:1});                       
  };
 
  // compare Password
  
- UserSchema.methods.isPasswordMatched = async function(givenPassword:string,savedPassword:string):Promise<boolean>{
+ UserSchema.statics.isPasswordMatched = async function(givenPassword:string,savedPassword:string):Promise<boolean>{
   return await bcrypt.compare(givenPassword,savedPassword)                       
 };
 
