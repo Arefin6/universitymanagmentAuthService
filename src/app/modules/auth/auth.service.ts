@@ -48,7 +48,6 @@ const loginUser = async (payload: ILoginUser) => {
 
 const refreshToken = async (token: string) => {
 
-    console.log(token)
   // check User Exits
   const userExists = await User.isUserExits(id)
 
