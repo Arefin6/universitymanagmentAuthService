@@ -4,7 +4,7 @@ import httpStatus from "http-status";
 import { AuthService } from "./auth.service";
 import sendResponse from "../../../shared/sendResponse";
 import config from "../../../config";
-import { ILoginUserResponse } from "./auth.interface";
+import { ILoginUserResponse, IRefreshTokenResponse } from "./auth.interface";
 
 const loginUser = catchAsync(
     async(req:Request,res:Response) =>{
@@ -26,7 +26,28 @@ const loginUser = catchAsync(
        })
   });
 
+  const refreshToken = catchAsync(
+    async(req:Request,res:Response) =>{
+      const {refreshToken} = req.cookies;
+      const result = await AuthService.refreshToken(refreshToken);
+
+       // set Refresh Token in Cokkie
+        const cookieOpions ={
+           secure:config.env === 'production',
+           httpOnly:true  
+        } 
+        res.cookie('refreshToken',refreshToken,cookieOpions);
+
+       sendResponse<IRefreshTokenResponse>(res,{
+        statusCode: httpStatus.OK,
+        success:true,
+        message: 'User Logged In successfully!',
+        data: result,
+       })
+  });
+
 
 export const AuthController =  {
-    loginUser
+    loginUser,
+    refreshToken
 }  
