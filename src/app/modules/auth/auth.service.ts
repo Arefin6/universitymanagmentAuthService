@@ -1,10 +1,11 @@
 import httpStatus from 'http-status'
 import ApiError from '../../../erros/ApiError'
 import User from '../users/user.model'
-import { ILoginUser, IRefreshTokenResponse } from './auth.interface'
+import { IChangePassword, ILoginUser, IRefreshTokenResponse } from './auth.interface'
 import { jwtHelper } from '../../../helpers/jwtHelpers'
 import config from '../../../config'
-import { Secret } from 'jsonwebtoken'
+import { JwtPayload, Secret } from 'jsonwebtoken'
+import bcrypt from 'bcrypt';
 
 const loginUser = async (payload: ILoginUser) => {
   const { id, password } = payload
@@ -79,7 +80,51 @@ const refreshToken = async (token: string):Promise<IRefreshTokenResponse> => {
    };
 }
 
+
+// change Password
+const changePassword = async (user: JwtPayload|null,payload:IChangePassword):Promise<void> => {
+  try {
+     const {newPassword,oldPassword} = payload;
+     
+     // check if user exists
+     const userExists = await User.isUserExits(user?.userId)
+
+    if (!userExists) {
+      throw new ApiError(httpStatus.NOT_FOUND, 'User Does Not Exists!')
+    }
+
+    // check old password is correct
+
+    if (
+      userExists.password &&
+      !(await User.isPasswordMatched(oldPassword, userExists.password))
+    ) {
+      throw new ApiError(httpStatus.UNAUTHORIZED, 'Password is InCorrect!')
+    }
+
+    // hash new password
+     const hashedPassword = await bcrypt.hash(newPassword,Number(config.bcryptSaltRound))
+
+
+     // update User
+      
+     const updatedData ={
+         password:hashedPassword,
+         needsPasswordChange:false,
+         passwordChangedAt:new Date()
+     }
+
+     await User.findByIdAndUpdate({id:user?.userID},updatedData,{new:true})
+
+
+  } catch (error) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Invalid Refresh Token');
+  }
+
+}
+
 export const AuthService = {
   loginUser,
-  refreshToken
+  refreshToken,
+  changePassword
 }

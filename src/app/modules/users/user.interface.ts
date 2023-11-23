@@ -6,7 +6,8 @@ export type IUser = {
   role:string,
   password:string,
   needsPasswordChange?:boolean,
-  student?:Types.ObjectId
+  student?:Types.ObjectId,
+  passwordChangedAt?:Date
 }
 export type UserModel = {
    isUserExits(id:string):Promise<Pick<IUser, 'id' | 'password' | 'role' | 'needsPasswordChange'>>;
